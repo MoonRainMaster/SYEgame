@@ -3,7 +3,6 @@ package com.sye.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,6 +13,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.*;
+import com.sye.game.utils.TiledObjectUtil;
 
 import static com.sye.game.utils.Constants.PPM;
 
@@ -29,10 +29,10 @@ public class main extends ApplicationAdapter {
 
     private Box2DDebugRenderer b2dr;
     private World world;
-    private Body player, plataform;
+    private Body player, plataform, player2, player3, player4;
 
-    private SpriteBatch batch;
-    private Texture tex;
+    private SpriteBatch batch, batch2, batch3, batch4;
+    private Texture tex, tex2, tex3, tex4;
 
     @Override
     public void create() {
@@ -46,14 +46,28 @@ public class main extends ApplicationAdapter {
         world = new World(new Vector2(0, 0f), false);
         b2dr = new Box2DDebugRenderer();
 
-        player = createBox(60, 100,40, 60, false);
         plataform = createBox(0, 0, 64, 32, true);
+        player = createBox(60, 100,20, 10, false);
+        player2 = createBox(60, 100, 20, 10, false);
+        player3 = createBox(60, 100, 20, 10, false);
+        player4 = createBox(60, 100, 20, 10, false);
 
         batch = new SpriteBatch();
         tex = new Texture("alienYellow.png");
 
+        batch2 = new SpriteBatch();
+        tex2 = new Texture("alienBlue.png");
+
+        batch3 = new SpriteBatch();
+        tex3 = new Texture("alienPink.png");
+
+        batch4 = new SpriteBatch();
+        tex4 = new Texture("alienGreen.png");
+
         map = new TmxMapLoader().load("Maps/SYEmap.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
+
+        TiledObjectUtil.parseTiledObjectLayer(world, map.getLayers().get("Collisions").getObjects());
     }
 
     @Override
@@ -66,10 +80,22 @@ public class main extends ApplicationAdapter {
         tmr.render();
 
         batch.begin();
-        batch.draw(tex, player.getPosition().x * PPM - (tex.getWidth() /2), player.getPosition().y * PPM - (tex.getHeight() / 2));
+        batch.draw(tex, player.getPosition().x * PPM - (tex.getWidth() /2) + 2, player.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
         batch.end();
 
-        b2dr.render(world, camera.combined.scl(PPM));
+        batch2.begin();
+        batch2.draw(tex2, player2.getPosition().x * PPM - (tex.getWidth() /2) + 2, player2.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
+        batch2.end();
+
+        batch3.begin();
+        batch3.draw(tex3, player3.getPosition().x * PPM - (tex.getWidth() /2) + 2, player3.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
+        batch3.end();
+
+        batch4.begin();
+        batch4.draw(tex4, player4.getPosition().x * PPM - (tex.getWidth() /2) + 2, player4.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
+        batch4.end();
+
+        //b2dr.render(world, camera.combined.scl(PPM));
     }
 
     @Override
@@ -82,40 +108,71 @@ public class main extends ApplicationAdapter {
         world.dispose();
         b2dr.dispose();
         batch.dispose();
+        batch2.dispose();
+        batch3.dispose();
+        batch4.dispose();
         tex.dispose();
+        tex2.dispose();
+        tex3.dispose();
+        tex4.dispose();
         tmr.dispose();
         map.dispose();
     }
 
     public void update(float delta){
-        world.step(1 / 60f, 6, 2);
+        world.step(1 / 60f, 1, 5);
 
         imputUpdate(delta);
         //cameraUpdate(delta);
         camera.update();
         tmr.setView(camera.combined, 1, 1, 720, 480);
         batch.setProjectionMatrix(camera.combined);
+        batch2.setProjectionMatrix(camera.combined);
+        batch3.setProjectionMatrix(camera.combined);
+        batch4.setProjectionMatrix(camera.combined);
     }
 
     public void imputUpdate(float delta){
-        int horizontalForce = 0;
-        int verticalForce = 0;
+        int horizontalForce = 0, horizontalForce2 = 0, horizontalForce3 = 0, horizontalForce4 = 0;
+        int verticalForce = 0, verticalForce2 = 0, verticalForce3 = 0, verticalForce4 = 0;
 
+        //Teclas para el jugador 1;
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             horizontalForce -= 1;
+            //player.setTransform(60 / PPM, 100 / PPM, 0);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            horizontalForce +=1;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            verticalForce += 1;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            verticalForce -=1;
-        }
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {horizontalForce +=1; }
+        if(Gdx.input.isKeyPressed(Input.Keys.UP)) {verticalForce += 1; }
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){verticalForce -=1; }
+        //Teclas para el jugador 2
+        if(Gdx.input.isKeyPressed(Input.Keys.W)) {verticalForce2 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.S)) {verticalForce2 -= 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.D)) {horizontalForce2 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.A)) {horizontalForce2 -= 1;}
+
+        //Teclas para el jugador3
+        if(Gdx.input.isKeyPressed(Input.Keys.NUMPAD_8)) {verticalForce3 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.NUMPAD_5)) {verticalForce3 -= 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.NUMPAD_6)) {horizontalForce3 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {horizontalForce3 -= 1;}
+
+        //Teclas para el jugador 4
+        if(Gdx.input.isKeyPressed(Input.Keys.I)) {verticalForce4 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.K)) {verticalForce4 -= 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.L)) {horizontalForce4 += 1;}
+        if(Gdx.input.isKeyPressed(Input.Keys.J)) {horizontalForce4 -= 1;}
 
         player.setLinearVelocity(horizontalForce * 5, player.getLinearVelocity().y);
         player.setLinearVelocity(player.getLinearVelocity().x, verticalForce * 5);
+
+        player2.setLinearVelocity(horizontalForce2 * 5, player2.getLinearVelocity().y);
+        player2.setLinearVelocity(player2.getLinearVelocity().x, verticalForce2 * 5);
+
+        player3.setLinearVelocity(horizontalForce3 * 5, player3.getLinearVelocity().y);
+        player3.setLinearVelocity(player3.getLinearVelocity().x, verticalForce3 * 5);
+
+        player4.setLinearVelocity(horizontalForce4 * 5, player4.getLinearVelocity().y);
+        player4.setLinearVelocity(player4.getLinearVelocity().x, verticalForce4 * 5);
 
     }
 
