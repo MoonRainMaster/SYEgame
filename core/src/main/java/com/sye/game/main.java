@@ -33,6 +33,15 @@ public class main extends ApplicationAdapter {
 
     private SpriteBatch batch, batch2, batch3, batch4;
     private Texture tex, tex2, tex3, tex4;
+    //batch de los dados y atributos
+    private SpriteBatch batch1_dado,batch2_dado,batch3_dado,batch4_dado,batch5_dado, batch6_dado;
+    private Texture tex1_dado, tex2_dado, tex3_dado, tex4_dado, tex5_dado, tex6_dado;
+
+    private int random;
+    private int x_dado=30;
+    private int y_dado=390;
+    private int ancho_dado=50;
+    private int alto_dado=50;
 
     @Override
     public void create() {
@@ -63,6 +72,27 @@ public class main extends ApplicationAdapter {
 
         batch4 = new SpriteBatch();
         tex4 = new Texture("alienGreen.png");
+
+        // inicio de los bach de los dados y texturas
+
+        batch1_dado = new SpriteBatch();
+        tex1_dado= new Texture("1dado.png");
+
+        batch2_dado = new SpriteBatch();
+        tex2_dado= new Texture("2dado.png");
+
+        batch3_dado = new SpriteBatch();
+        tex3_dado= new Texture("3dado.png");
+
+        batch4_dado = new SpriteBatch();
+        tex4_dado= new Texture("4dado.png");
+
+        batch5_dado = new SpriteBatch();
+        tex5_dado= new Texture("5dado.png");
+
+        batch6_dado = new SpriteBatch();
+        tex6_dado= new Texture("6dado.png");
+
 
         map = new TmxMapLoader().load("Maps/SYEmap.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
@@ -95,6 +125,33 @@ public class main extends ApplicationAdapter {
         batch4.draw(tex4, player4.getPosition().x * PPM - (tex.getWidth() /2) + 2, player4.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
         batch4.end();
 
+        //Batch de los dados
+        if(random==1){
+            batch1_dado.begin();
+            batch1_dado.draw(tex1_dado,30,390,50,50);
+            batch1_dado.end();
+        }else if(random==2){
+            batch2_dado.begin();
+            batch2_dado.draw(tex2_dado,30,390,50,50);
+            batch2_dado.end();
+        }else if(random==3){
+            batch3_dado.begin();
+            batch3_dado.draw(tex3_dado,30,390,50,50);
+            batch3_dado.end();
+        }else if(random==4){
+            batch4_dado.begin();
+            batch4_dado.draw(tex4_dado,30,390,50,50);
+            batch4_dado.end();
+        }else if(random==5){
+            batch5_dado.begin();
+            batch5_dado.draw(tex5_dado,30,390,50,50);
+            batch5_dado.end();
+        }else if(random==6){
+            batch6_dado.begin();
+            batch6_dado.draw(tex6_dado,30,390,50,50);
+            batch6_dado.end();
+        }
+
         //b2dr.render(world, camera.combined.scl(PPM));
     }
 
@@ -117,6 +174,7 @@ public class main extends ApplicationAdapter {
         tex4.dispose();
         tmr.dispose();
         map.dispose();
+
     }
 
     public void update(float delta){
@@ -130,6 +188,15 @@ public class main extends ApplicationAdapter {
         batch2.setProjectionMatrix(camera.combined);
         batch3.setProjectionMatrix(camera.combined);
         batch4.setProjectionMatrix(camera.combined);
+
+        //dados
+        batch.setProjectionMatrix(camera.combined);
+        batch1_dado.setProjectionMatrix(camera.combined);
+        batch2_dado.setProjectionMatrix(camera.combined);
+        batch3_dado.setProjectionMatrix(camera.combined);
+        batch4_dado.setProjectionMatrix(camera.combined);
+        batch5_dado.setProjectionMatrix(camera.combined);
+        batch6_dado.setProjectionMatrix(camera.combined);
     }
 
     public void imputUpdate(float delta){
@@ -173,6 +240,14 @@ public class main extends ApplicationAdapter {
 
         player4.setLinearVelocity(horizontalForce4 * 5, player4.getLinearVelocity().y);
         player4.setLinearVelocity(player4.getLinearVelocity().x, verticalForce4 * 5);
+
+        //generador random de los dados
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+
+            if (Gdx.input.isTouched()) {
+                random = (int) (Math.random() * 6 + 1);
+            }
+        }
 
     }
 
