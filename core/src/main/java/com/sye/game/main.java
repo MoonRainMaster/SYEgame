@@ -238,6 +238,14 @@ public class main extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.L)) {horizontalForce4 += 1;}
         if(Gdx.input.isKeyPressed(Input.Keys.J)) {horizontalForce4 -= 1;}
 
+        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+            System.out.print(player.getPosition().x);
+            System.out.print(", ");
+            System.out.print(player.getPosition().y);
+            System.out.println();
+            playerActivate();
+        }
+
         player.setLinearVelocity(horizontalForce * 5, player.getLinearVelocity().y);
         player.setLinearVelocity(player.getLinearVelocity().x, verticalForce * 5);
 
@@ -297,5 +305,13 @@ public class main extends ApplicationAdapter {
         shape.dispose();
 
         return pBody;
+    }
+
+    public void playerActivate(){
+
+        if (player.getPosition().x > 5.429 && player.getPosition().x < 8.640 && player.getPosition().y < 3.423 && player.getPosition().y > 2.037){
+            player.setTransform(0, 0, 0);
+        }
+
     }
 }
