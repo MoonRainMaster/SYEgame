@@ -238,7 +238,7 @@ public class main extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.L)) {horizontalForce4 += 1;}
         if(Gdx.input.isKeyPressed(Input.Keys.J)) {horizontalForce4 -= 1;}
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             System.out.print(player.getPosition().x);
             System.out.print(", ");
             System.out.print(player.getPosition().y);
@@ -310,7 +310,408 @@ public class main extends ApplicationAdapter {
     public void playerActivate(){
 
         if (player.getPosition().x > 5.429 && player.getPosition().x < 8.640 && player.getPosition().y < 3.423 && player.getPosition().y > 2.037){
-            player.setTransform(0, 0, 0);
+            if(random>3){
+                player.setTransform(16, 3, 0);
+            }else{
+                player.setTransform(2,3,0);
+            }
+
+        }else if (player.getPosition().x > 15.423 && player.getPosition().x < 16.616 && player.getPosition().y < 3.462 && player.getPosition().y > 2.668){
+            if(random>3){
+                player.setTransform(20, 3, 0);
+            }else{
+                player.setTransform(6,3,0);;
+            }
+
+        }else if (player.getPosition().x > 19.583 && player.getPosition().x < 20.681 && player.getPosition().y < 3.1 && player.getPosition().y > 2.047){
+            if(random>3){
+                player.setTransform(14, 5, 0);
+            }else{
+                player.setTransform(16,3,0);;
+            }
+
+        }else if (player.getPosition().x > 11.404 && player.getPosition().x < 14.605 && player.getPosition().y < 5.459 && player.getPosition().y > 4.028){
+            if(random>3){
+                player.setTransform(8, 5, 0);
+            }else{
+                player.setTransform(20,3,0);;
+            }
+
+        }else if (player.getPosition().x > 7.398 && player.getPosition().x < 8.64 && player.getPosition().y < 5.483 && player.getPosition().y > 4.021){
+            if(random>3){
+                player.setTransform(4, 5, 0);
+            }else{
+                player.setTransform(14,5,0);;
+            }
+
+        }else if (player.getPosition().x > 3.399 && player.getPosition().x < 4.649 && player.getPosition().y < 5.450 && player.getPosition().y > 4.040){
+            if(random>3){
+                player.setTransform(6, 6, 0);
+            }else{
+                player.setTransform(8,5,0);;
+            }
+
+        }else if (player.getPosition().x > 5.401 && player.getPosition().x < 6.628 && player.getPosition().y < 7.443 && player.getPosition().y > 6.054){
+            if(random>3){
+                player.setTransform(12, 7, 0);
+            }else{
+                player.setTransform(4,5,0);;
+            }
+
+        }else if (player.getPosition().x > 11.470 && player.getPosition().x < 12.554 && player.getPosition().y < 7.438 && player.getPosition().y > 6.046){
+            if(random>3){
+                player.setTransform(16, 7, 0);
+            }else{
+                player.setTransform(6,7,0);;
+            }
+
+        }else if (player.getPosition().x > 15.453 && player.getPosition().x < 16.619 && player.getPosition().y < 7.432 && player.getPosition().y > 6.043){
+            if(random>3){
+                player.setTransform(18, 9, 0);
+            }else{
+                player.setTransform(12,7,0);;
+            }
+
+        }else if (player.getPosition().x > 17.441 && player.getPosition().x < 18.607 && player.getPosition().y < 9.436 && player.getPosition().y > 8.046){
+            if(random>3){
+                player.setTransform(12, 9, 0);
+            }else{
+                player.setTransform(16,7,0);;
+            }
+
+        }else if (player.getPosition().x > 9.408 && player.getPosition().x < 12.575 && player.getPosition().y < 9.427 && player.getPosition().y > 8.037){
+            if(random>3){
+                player.setTransform(4, 9, 0);
+            }else{
+                player.setTransform(18,9,0);;
+            }
+
+        }else if (player.getPosition().x > 3.459 && player.getPosition().x < 4.621 && player.getPosition().y < 9.855 && player.getPosition().y > 8.037){
+            if(random>3){
+                player.setTransform(6, 11, 0);
+            }else{
+                player.setTransform(12,9,0);;
+            }
+
+        }else if (player.getPosition().x > 5.469 && player.getPosition().x < 8.552 && player.getPosition().y < 11.468 && player.getPosition().y > 10.039){
+            if(random>3){
+                player.setTransform(16, 11, 0);
+            }else{
+                player.setTransform(4,9,0);;
+            }
+
+        }else if (player.getPosition().x > 15.457 && player.getPosition().x < 16.623 && player.getPosition().y < 11.466 && player.getPosition().y > 10.054){
+            if(random>3){
+                player.setTransform(16, 11, 0);
+            }else{
+                player.setTransform(6,11,0);;
+            }
+
+        }
+        //jugador 2
+
+        if (player2.getPosition().x > 5.429 && player2.getPosition().x < 8.640 && player2.getPosition().y < 3.423 && player2.getPosition().y > 2.037){
+            if(random>3){
+                player2.setTransform(16, 3, 0);
+            }else{
+                player2.setTransform(2,3,0);
+            }
+
+        }else if (player2.getPosition().x > 15.423 && player2.getPosition().x < 16.616 && player2.getPosition().y < 3.462 && player2.getPosition().y > 2.668){
+            if(random>3){
+                player2.setTransform(20, 3, 0);
+            }else{
+                player2.setTransform(6,3,0);;
+            }
+
+        }else if (player2.getPosition().x > 19.533 && player2.getPosition().x < 20.681 && player2.getPosition().y < 3.1 && player2.getPosition().y > 2.047){
+            if(random>3){
+                player2.setTransform(14, 5, 0);
+            }else{
+                player2.setTransform(16,3,0);;
+            }
+
+        }else if (player2.getPosition().x > 11.404 && player2.getPosition().x < 14.605 && player2.getPosition().y < 5.459 && player2.getPosition().y > 4.028){
+            if(random>3){
+                player2.setTransform(8, 5, 0);
+            }else{
+                player2.setTransform(20,3,0);;
+            }
+
+        }else if (player2.getPosition().x > 7.398 && player2.getPosition().x < 8.64 && player2.getPosition().y < 5.483 && player2.getPosition().y > 4.021){
+            if(random>3){
+                player2.setTransform(4, 5, 0);
+            }else{
+                player2.setTransform(14,5,0);;
+            }
+
+        }else if (player2.getPosition().x > 3.399 && player2.getPosition().x < 4.649 && player2.getPosition().y < 5.450 && player2.getPosition().y > 4.040){
+            if(random>3){
+                player2.setTransform(6, 6, 0);
+            }else{
+                player2.setTransform(8,5,0);;
+            }
+
+        }else if (player2.getPosition().x > 5.401 && player2.getPosition().x < 6.628 && player2.getPosition().y < 7.443 && player2.getPosition().y > 6.054){
+            if(random>3){
+                player2.setTransform(12, 7, 0);
+            }else{
+                player2.setTransform(4,5,0);;
+            }
+
+        }else if (player2.getPosition().x > 11.470 && player2.getPosition().x < 12.554 && player2.getPosition().y < 7.438 && player2.getPosition().y > 6.046){
+            if(random>3){
+                player2.setTransform(16, 7, 0);
+            }else{
+                player2.setTransform(6,7,0);;
+            }
+
+        }else if (player2.getPosition().x > 15.453 && player2.getPosition().x < 16.619 && player2.getPosition().y < 7.432 && player2.getPosition().y > 6.043){
+            if(random>3){
+                player2.setTransform(18, 9, 0);
+            }else{
+                player2.setTransform(12,7,0);;
+            }
+
+        }else if (player2.getPosition().x > 17.441 && player2.getPosition().x < 18.607 && player2.getPosition().y < 9.436 && player2.getPosition().y > 8.046){
+            if(random>3){
+                player2.setTransform(12, 9, 0);
+            }else{
+                player2.setTransform(16,7,0);;
+            }
+
+        }else if (player2.getPosition().x > 9.408 && player2.getPosition().x < 12.575 && player2.getPosition().y < 9.427 && player2.getPosition().y > 8.037){
+            if(random>3){
+                player2.setTransform(4, 9, 0);
+            }else{
+                player2.setTransform(18,9,0);;
+            }
+
+        }else if (player2.getPosition().x > 3.459 && player2.getPosition().x < 4.621 && player2.getPosition().y < 9.855 && player2.getPosition().y > 8.037){
+            if(random>3){
+                player2.setTransform(6, 11, 0);
+            }else{
+                player2.setTransform(12,9,0);;
+            }
+
+        }else if (player2.getPosition().x > 5.469 && player2.getPosition().x < 8.552 && player2.getPosition().y < 11.468 && player2.getPosition().y > 10.039){
+            if(random>3){
+                player2.setTransform(16, 11, 0);
+            }else{
+                player2.setTransform(4,9,0);;
+            }
+
+        }else if (player2.getPosition().x > 15.457 && player2.getPosition().x < 16.623 && player2.getPosition().y < 11.466 && player2.getPosition().y > 10.054){
+            if(random>3){
+                player2.setTransform(16, 11, 0);
+            }else{
+                player2.setTransform(6,11,0);;
+            }
+
+        }
+
+//jugador 3
+
+        if (player3.getPosition().x > 5.429 && player3.getPosition().x < 8.640 && player3.getPosition().y < 3.423 && player3.getPosition().y > 2.037){
+            if(random>3){
+                player3.setTransform(16, 3, 0);
+            }else{
+                player3.setTransform(2,3,0);
+            }
+
+        }else if (player3.getPosition().x > 15.423 && player3.getPosition().x < 16.616 && player3.getPosition().y < 3.462 && player3.getPosition().y > 2.668){
+            if(random>3){
+                player3.setTransform(20, 3, 0);
+            }else{
+                player3.setTransform(6,3,0);;
+            }
+
+        }else if (player3.getPosition().x > 19.533 && player3.getPosition().x < 20.681 && player3.getPosition().y < 3.1 && player3.getPosition().y > 2.047){
+            if(random>3){
+                player3.setTransform(14, 5, 0);
+            }else{
+                player3.setTransform(16,3,0);;
+            }
+
+        }else if (player3.getPosition().x > 11.404 && player3.getPosition().x < 14.605 && player3.getPosition().y < 5.459 && player3.getPosition().y > 4.028){
+            if(random>3){
+                player3.setTransform(8, 5, 0);
+            }else{
+                player3.setTransform(20,3,0);;
+            }
+
+        }else if (player3.getPosition().x > 7.398 && player3.getPosition().x < 8.64 && player3.getPosition().y < 5.483 && player3.getPosition().y > 4.021){
+            if(random>3){
+                player3.setTransform(4, 5, 0);
+            }else{
+                player3.setTransform(14,5,0);;
+            }
+
+        }else if (player3.getPosition().x > 3.399 && player3.getPosition().x < 4.649 && player3.getPosition().y < 5.450 && player3.getPosition().y > 4.040){
+            if(random>3){
+                player3.setTransform(6, 6, 0);
+            }else{
+                player3.setTransform(8,5,0);;
+            }
+
+        }else if (player3.getPosition().x > 5.401 && player3.getPosition().x < 6.628 && player3.getPosition().y < 7.443 && player3.getPosition().y > 6.054){
+            if(random>3){
+                player3.setTransform(12, 7, 0);
+            }else{
+                player3.setTransform(4,5,0);;
+            }
+
+        }else if (player3.getPosition().x > 11.470 && player3.getPosition().x < 12.554 && player3.getPosition().y < 7.438 && player3.getPosition().y > 6.046){
+            if(random>3){
+                player3.setTransform(16, 7, 0);
+            }else{
+                player3.setTransform(6,7,0);;
+            }
+
+        }else if (player3.getPosition().x > 15.453 && player3.getPosition().x < 16.619 && player3.getPosition().y < 7.432 && player3.getPosition().y > 6.043){
+            if(random>3){
+                player3.setTransform(18, 9, 0);
+            }else{
+                player3.setTransform(12,7,0);;
+            }
+
+        }else if (player3.getPosition().x > 17.441 && player3.getPosition().x < 18.607 && player3.getPosition().y < 9.436 && player3.getPosition().y > 8.046){
+            if(random>3){
+                player3.setTransform(12, 9, 0);
+            }else{
+                player3.setTransform(16,7,0);;
+            }
+
+        }else if (player3.getPosition().x > 9.408 && player2.getPosition().x < 12.575 && player3.getPosition().y < 9.427 && player3.getPosition().y > 8.037){
+            if(random>3){
+                player3.setTransform(4, 9, 0);
+            }else{
+                player3.setTransform(18,9,0);;
+            }
+
+        }else if (player3.getPosition().x > 3.459 && player3.getPosition().x < 4.621 && player3.getPosition().y < 9.855 && player3.getPosition().y > 8.037){
+            if(random>3){
+                player3.setTransform(6, 11, 0);
+            }else{
+                player3.setTransform(12,9,0);;
+            }
+
+        }else if (player3.getPosition().x > 5.469 && player3.getPosition().x < 8.552 && player3.getPosition().y < 11.468 && player3.getPosition().y > 10.039){
+            if(random>3){
+                player3.setTransform(16, 11, 0);
+            }else{
+                player3.setTransform(4,9,0);;
+            }
+
+        }else if (player3.getPosition().x > 15.457 && player3.getPosition().x < 16.623 && player3.getPosition().y < 11.466 && player3.getPosition().y > 10.054){
+            if(random>3){
+                player3.setTransform(16, 11, 0);
+            }else{
+                player3.setTransform(6,11,0);;
+            }
+
+        }
+
+        //jugador 4
+
+        if (player4.getPosition().x > 5.429 && player4.getPosition().x < 8.640 && player4.getPosition().y < 3.423 && player4.getPosition().y > 2.037){
+            if(random>3){
+                player4.setTransform(16, 3, 0);
+            }else{
+                player4.setTransform(2,3,0);
+            }
+
+        }else if (player4.getPosition().x > 15.423 && player4.getPosition().x < 16.616 && player4.getPosition().y < 3.462 && player4.getPosition().y > 2.668){
+            if(random>3){
+                player4.setTransform(20, 3, 0);
+            }else{
+                player4.setTransform(6,3,0);;
+            }
+
+        }else if (player4.getPosition().x > 19.533 && player4.getPosition().x < 20.681 && player4.getPosition().y < 3.1 && player4.getPosition().y > 2.047){
+            if(random>3){
+                player4.setTransform(14, 5, 0);
+            }else{
+                player4.setTransform(16,3,0);;
+            }
+
+        }else if (player4.getPosition().x > 11.404 && player4.getPosition().x < 14.605 && player4.getPosition().y < 5.459 && player4.getPosition().y > 4.028){
+            if(random>3){
+                player4.setTransform(8, 5, 0);
+            }else{
+                player4.setTransform(20,3,0);;
+            }
+
+        }else if (player4.getPosition().x > 7.398 && player4.getPosition().x < 8.64 && player4.getPosition().y < 5.483 && player4.getPosition().y > 4.021){
+            if(random>3){
+                player4.setTransform(4, 5, 0);
+            }else{
+                player4.setTransform(14,5,0);;
+            }
+
+        }else if (player4.getPosition().x > 3.399 && player4.getPosition().x < 4.649 && player4.getPosition().y < 5.450 && player4.getPosition().y > 4.040){
+            if(random>3){
+                player4.setTransform(6, 6, 0);
+            }else{
+                player4.setTransform(8,5,0);;
+            }
+
+        }else if (player4.getPosition().x > 5.401 && player4.getPosition().x < 6.628 && player4.getPosition().y < 7.443 && player4.getPosition().y > 6.054){
+            if(random>3){
+                player4.setTransform(12, 7, 0);
+            }else{
+                player4.setTransform(4,5,0);;
+            }
+
+        }else if (player4.getPosition().x > 11.470 && player4.getPosition().x < 12.554 && player4.getPosition().y < 7.438 && player4.getPosition().y > 6.046){
+            if(random>3){
+                player4.setTransform(16, 7, 0);
+            }else{
+                player4.setTransform(6,7,0);;
+            }
+
+        }else if (player4.getPosition().x > 15.453 && player4.getPosition().x < 16.619 && player4.getPosition().y < 7.432 && player4.getPosition().y > 6.043){
+            if(random>3){
+                player4.setTransform(18, 9, 0);
+            }else{
+                player4.setTransform(12,7,0);;
+            }
+
+        }else if (player4.getPosition().x > 17.441 && player4.getPosition().x < 18.607 && player4.getPosition().y < 9.436 && player4.getPosition().y > 8.046){
+            if(random>3){
+                player4.setTransform(12, 9, 0);
+            }else{
+                player4.setTransform(16,7,0);;
+            }
+
+        }else if (player4.getPosition().x > 9.408 && player4.getPosition().x < 12.575 && player4.getPosition().y < 9.427 && player4.getPosition().y > 8.037){
+            if(random>3){
+                player4.setTransform(4, 9, 0);
+            }else{
+                player4.setTransform(18,9,0);;
+            }
+
+        }else if (player4.getPosition().x > 3.459 && player4.getPosition().x < 4.621 && player4.getPosition().y < 9.855 && player4.getPosition().y > 8.037){
+            if(random>3){
+                player4.setTransform(6, 11, 0);
+            }else{
+                player4.setTransform(12,9,0);;
+            }
+
+        }else if (player4.getPosition().x > 5.469 && player4.getPosition().x < 8.552 && player4.getPosition().y < 11.468 && player4.getPosition().y > 10.039){
+            if(random>3){
+                player4.setTransform(16, 11, 0);
+            }else{
+                player4.setTransform(4,9,0);;
+            }
+
+        }else if (player4.getPosition().x > 15.457 && player4.getPosition().x < 16.623 && player4.getPosition().y < 11.466 && player4.getPosition().y > 10.054){
+            if(random>3){
+                player4.setTransform(16, 11, 0);
+            }else{
+                player4.setTransform(6,11,0);;
+            }
+
         }
 
     }
