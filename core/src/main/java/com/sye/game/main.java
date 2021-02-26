@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -26,6 +28,8 @@ public class main extends ApplicationAdapter {
 
     private OrthogonalTiledMapRenderer tmr;
     private TiledMap map;
+    private TiledMapTileLayer treesLayer;
+    private int[] decorationLayersIndices;
 
     private Box2DDebugRenderer b2dr;
     private World world;
@@ -103,6 +107,15 @@ public class main extends ApplicationAdapter {
         tmr = new OrthogonalTiledMapRenderer(map);
 
         TiledObjectUtil.parseTiledObjectLayer(world, map.getLayers().get("Collisions").getObjects());
+
+        // Reading map layers
+        MapLayers mapLayers = map.getLayers();
+        treesLayer = (TiledMapTileLayer) mapLayers.get("ArbolesDelanteros");
+        decorationLayersIndices = new int[]{
+                mapLayers.getIndex("FondoBloques"),
+                mapLayers.getIndex("Trampas/Escaleras"),
+                mapLayers.getIndex("Cactus")
+        };
     }
 
     @Override
@@ -112,7 +125,8 @@ public class main extends ApplicationAdapter {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tmr.render();
+        tmr.render(decorationLayersIndices);
+        tmr.getBatch().begin();
 
         batch.begin();
         batch.draw(tex, player.getPosition().x * PPM - (tex.getWidth() /2) + 2, player.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
@@ -130,6 +144,10 @@ public class main extends ApplicationAdapter {
         batch4.draw(tex4, player4.getPosition().x * PPM - (tex.getWidth() /2) + 2, player4.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
         batch4.end();
 
+
+        tmr.renderTileLayer(treesLayer);
+        tmr.getBatch().end();
+        
         //Batch de los dados
         batch7_boton.begin();
         batch7_boton.draw(tex7_boton,100,390,60,50);
