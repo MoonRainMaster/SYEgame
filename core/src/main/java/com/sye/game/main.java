@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -26,6 +28,8 @@ public class main extends ApplicationAdapter {
 
     private OrthogonalTiledMapRenderer tmr;
     private TiledMap map;
+    private TiledMapTileLayer treesLayer;
+    private int[] decorationLayersIndices;
 
     private Box2DDebugRenderer b2dr;
     private World world;
@@ -103,6 +107,15 @@ public class main extends ApplicationAdapter {
         tmr = new OrthogonalTiledMapRenderer(map);
 
         TiledObjectUtil.parseTiledObjectLayer(world, map.getLayers().get("Collisions").getObjects());
+
+        // Reading map layers
+        MapLayers mapLayers = map.getLayers();
+        treesLayer = (TiledMapTileLayer) mapLayers.get("ArbolesDelanteros");
+        decorationLayersIndices = new int[]{
+                mapLayers.getIndex("FondoBloques"),
+                mapLayers.getIndex("Trampas/Escaleras"),
+                mapLayers.getIndex("Cactus")
+        };
     }
 
     @Override
@@ -112,7 +125,10 @@ public class main extends ApplicationAdapter {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tmr.render();
+        //tmr.render();
+
+        tmr.render(decorationLayersIndices);
+        tmr.getBatch().begin();
 
         batch.begin();
         batch.draw(tex, player.getPosition().x * PPM - (tex.getWidth() /2) + 2, player.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
@@ -129,6 +145,9 @@ public class main extends ApplicationAdapter {
         batch4.begin();
         batch4.draw(tex4, player4.getPosition().x * PPM - (tex.getWidth() /2) + 2, player4.getPosition().y * PPM - (tex.getHeight() / 2) + 17);
         batch4.end();
+
+        tmr.renderTileLayer(treesLayer);
+        tmr.getBatch().end();
 
         //Batch de los dados
         batch7_boton.begin();
@@ -238,7 +257,8 @@ public class main extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.L)) {horizontalForce4 += 1;}
         if(Gdx.input.isKeyPressed(Input.Keys.J)) {horizontalForce4 -= 1;}
 
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
+        //Recarga del jugador / teletransporte xd
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER)) {
             System.out.print(player.getPosition().x);
             System.out.print(", ");
             System.out.print(player.getPosition().y);
@@ -309,8 +329,18 @@ public class main extends ApplicationAdapter {
 
     public void playerActivate(){
 
-        if (player.getPosition().x > 5.429 && player.getPosition().x < 8.640 && player.getPosition().y < 3.423 && player.getPosition().y > 2.037){
-            player.setTransform(0, 0, 0);
+        if (player.getPosition().x > 5.429 && player.getPosition().x < 8.640 && player.getPosition().y < 3.423 && player.getPosition().y > 2.037) {
+            if (random > 3) {
+                player.setTransform(16, 3, 0);
+            } else {
+                player.setTransform(2, 3, 0);
+            }
+        } else if (player.getPosition().x > 15.423 && player.getPosition().x < 16.616 && player.getPosition().y < 3.462 && player.getPosition().y > 2.668){
+            if(random > 3){
+                player.setTransform(20,3, 0);
+            }else{
+                player.setTransform(2, 3, 0);
+            }
         }
 
     }

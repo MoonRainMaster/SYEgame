@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="22" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="57">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="22" height="13" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="57">
  <tileset firstgid="1" source="../ResouceMaps/tileGrass.tsx"/>
  <tileset firstgid="2" source="../ResouceMaps/tileLava.tsx"/>
  <tileset firstgid="3" source="../ResouceMaps/tileMagic.tsx"/>
@@ -12,6 +12,20 @@
  <tileset firstgid="10" source="../ResouceMaps/tileWater_tile.tsx"/>
  <tileset firstgid="11" source="../ResouceMaps/treeGreen_high.tsx"/>
  <tileset firstgid="12" source="../ResouceMaps/treeGreen_low.tsx"/>
+ <tileset firstgid="13" source="../ResouceMaps/treeBlue_mid.tsx"/>
+ <tileset firstgid="14" source="../ResouceMaps/treeBlue_low.tsx"/>
+ <tileset firstgid="15" source="../ResouceMaps/treeCactus_1.tsx"/>
+ <tileset firstgid="16" source="../ResouceMaps/treeCactus_2.tsx"/>
+ <tileset firstgid="17" source="../ResouceMaps/treeAutumn_low.tsx"/>
+ <tileset firstgid="18" source="../ResouceMaps/treeAutumn_high.tsx"/>
+ <tileset firstgid="19" source="../ResouceMaps/flowerWhite.tsx"/>
+ <tileset firstgid="20" source="../ResouceMaps/flowerGreen.tsx"/>
+ <tileset firstgid="21" source="../ResouceMaps/bushMagic.tsx"/>
+ <tileset firstgid="22" source="../ResouceMaps/bushSnow.tsx"/>
+ <tileset firstgid="23" source="../ResouceMaps/bushGrass.tsx"/>
+ <tileset firstgid="24" source="../ResouceMaps/bushAutumn.tsx"/>
+ <tileset firstgid="25" source="../ResouceMaps/flowerRed.tsx"/>
+ <tileset firstgid="26" source="../ResouceMaps/bushSand.tsx"/>
  <layer id="1" name="FondoBloques" width="22" height="13">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -32,16 +46,16 @@
  <layer id="3" name="Trampas/Escaleras" width="22" height="13">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,19,22,0,19,0,22,0,0,0,0,19,0,14,0,0,0,19,0,0,13,0,
+0,0,0,22,0,0,0,0,22,19,0,0,19,0,0,19,0,0,0,0,22,0,
 0,0,0,0,0,8,0,8,0,0,0,0,0,0,0,8,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,10,0,0,0,0,0,10,0,10,0,0,0,0,0,10,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,9,0,0,0,0,0,9,0,0,0,9,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,7,0,0,0,7,0,0,0,7,0,7,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,10,0,0,0,0,21,10,21,10,0,0,21,0,0,10,0,0,0,0,
+0,0,0,0,0,0,0,21,0,0,0,0,0,21,0,0,0,0,21,0,0,0,
+0,25,0,0,24,9,25,0,0,0,0,9,24,0,0,9,20,24,0,0,24,0,
+0,0,24,0,0,0,0,0,0,0,0,24,0,0,25,0,0,0,25,0,0,0,
+0,0,0,23,0,0,0,7,0,0,0,20,0,7,20,0,0,23,20,0,0,0,
+0,0,23,20,0,0,0,0,0,0,23,0,0,0,0,0,0,20,23,0,0,0,
 0,0,0,0,0,6,0,6,0,0,0,0,0,0,0,6,0,0,0,6,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -49,16 +63,33 @@
  <layer id="4" name="ArbolesDelanteros" width="22" height="13">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,14,13,0,0,0,0,13,0,0,0,0,13,13,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,26,0,0,0,0,0,0,0,26,0,0,26,0,0,0,0,0,
+0,26,0,0,0,0,26,0,16,0,0,0,0,26,0,15,0,0,0,0,0,0,
+0,0,0,21,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,17,0,0,0,17,17,0,0,0,0,18,17,0,0,18,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,12,11,0,0,0,12,11,0,12,0,0,11,11,0,0,11,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="5" name="Cactus" width="22" height="13">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,15,0,0,0,0,0,15,0,0,0,15,0,0,0,15,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,11,0,0,0,0,0,12,0,0,0,12,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
