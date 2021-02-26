@@ -34,17 +34,20 @@ public class main extends ApplicationAdapter {
     private SpriteBatch batch, batch2, batch3, batch4;
     private Texture tex, tex2, tex3, tex4;
     //batch de los dados y atributos
-    private SpriteBatch batch1_dado,batch2_dado,batch3_dado,batch4_dado,batch5_dado, batch6_dado;
-    private Texture tex1_dado, tex2_dado, tex3_dado, tex4_dado, tex5_dado, tex6_dado;
+    private SpriteBatch batch1_dado,batch2_dado,batch3_dado,batch4_dado,batch5_dado, batch6_dado, batch7_boton;
+    private Texture tex1_dado, tex2_dado, tex3_dado, tex4_dado, tex5_dado, tex6_dado,tex7_boton;
 
     private int random;
-    private int x_dado=30;
-    private int y_dado=390;
+    private float x_dado=100;
+    private float y_dado=390;
     private int ancho_dado=50;
     private int alto_dado=50;
 
+
+
     @Override
     public void create() {
+
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
 
@@ -93,6 +96,8 @@ public class main extends ApplicationAdapter {
         batch6_dado = new SpriteBatch();
         tex6_dado= new Texture("6dado.png");
 
+        batch7_boton=new SpriteBatch();
+        tex7_boton= new Texture("boton_dado.jpg");
 
         map = new TmxMapLoader().load("Maps/SYEmap.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
@@ -126,6 +131,10 @@ public class main extends ApplicationAdapter {
         batch4.end();
 
         //Batch de los dados
+        batch7_boton.begin();
+        batch7_boton.draw(tex7_boton,100,390,60,50);
+        batch7_boton.end();
+
         if(random==1){
             batch1_dado.begin();
             batch1_dado.draw(tex1_dado,30,390,50,50);
@@ -242,11 +251,19 @@ public class main extends ApplicationAdapter {
         player4.setLinearVelocity(player4.getLinearVelocity().x, verticalForce4 * 5);
 
         //generador random de los dados
+        float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
+        float x1=Gdx.input.getX();
+        float y1=Gdx.input.getY();
+
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 
-            if (Gdx.input.isTouched()) {
-                random = (int) (Math.random() * 6 + 1);
+            if(x1>=x_dado && x1<160 && h-y1>y_dado && h-y1<447){
+                if (Gdx.input.isTouched()) {
+                    random = (int) (Math.random() * 6 + 1);
+                }
             }
+
         }
 
     }
